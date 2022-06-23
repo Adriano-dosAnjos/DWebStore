@@ -26,7 +26,6 @@ export class ReadCategoriaComponent implements OnInit {
     this.service.readCategoria().subscribe(categoria =>{
       this.categoria = categoria;
     });
-
   }
 
   openDialog(): void{

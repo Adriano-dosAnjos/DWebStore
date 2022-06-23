@@ -12,10 +12,10 @@ import { Pedido } from 'src/models/pedido.model';
 })
 export class CadastroService {
 
-  URLProduto = "http://localhost:3000/produtos";
-  URLPessoa = "http://localhost:3000/usuarios";
-  URLCatagoria = "http://localhost:3000/categorias";
-  URLPedido = "http://localhost:3000/pedidos";
+  URLProduto    = "http://localhost:3000/produtos";
+  URLPessoa     = "http://localhost:3000/usuarios";
+  URLCatagoria  = "http://localhost:3000/categorias";
+  URLPedido     = "http://localhost:3000/pedidos";
 
   constructor(
     private http: HttpClient
@@ -29,15 +29,15 @@ export class CadastroService {
     return this.http.get<Produto[]>(this.URLProduto);
   }
 
-  readProdutoForId(id : number): Observable<Produto>{
-    return this.http.get<Produto>(this.URLProduto + "/" + id);
+  readProdutoForId(codigo : number): Observable<Produto>{
+    return this.http.get<Produto>(this.URLProduto + "/" + codigo);
   }
 
-  updateProduto(idAtualizar: Number, produtoAlterado: Produto) : Observable<any> {
-    return this.http.put<any>(this.URLProduto + "/" + idAtualizar, produtoAlterado);
+  updateProduto(codigoAtualizar: number, produtoAlterado: Produto) : Observable<any> {
+    return this.http.put<any>(this.URLProduto + "/" + codigoAtualizar, produtoAlterado);
   }
 
-  deleteProduto(codigoProduto : Number) : Observable<any>{
+  deleteProduto(codigoProduto : number) : Observable<any>{
     return this.http.delete<any>(this.URLProduto + "/" + codigoProduto);
   }
 
@@ -51,16 +51,16 @@ export class CadastroService {
     return this.http.get<Usuario[]>(this.URLPessoa);
   }
 
-  readUserForId(id: number): Observable<Usuario>{
-    return this.http.get<Usuario>(this.URLPessoa + "/" + id);
+  readUserForId(codigo: number): Observable<Usuario>{
+    return this.http.get<Usuario>(this.URLPessoa + "/" + codigo);
   }
 
-  uptadeUser(idUsuarioAtualizar: Number, usuarioAlterado: Usuario): Observable<any>{
-    return this.http.put(this.URLPessoa + "/" + idUsuarioAtualizar, usuarioAlterado);
+  uptadeUser(codigoUsuarioAtualizar: number, usuarioAlterado: Usuario): Observable<any>{
+    return this.http.put(this.URLPessoa + "/" + codigoUsuarioAtualizar, usuarioAlterado);
   }
 
-  deleteUser(idUsuario: Number): Observable<any>{
-    return this.http.delete<any>(this.URLPessoa + "/" + idUsuario);
+  deleteUser(codigoUsuario: number): Observable<any>{
+    return this.http.delete<any>(this.URLPessoa + "/" + codigoUsuario);
   }
 
   /* CRUD de Categorias*/
@@ -76,11 +76,11 @@ export class CadastroService {
     return this.http.get<Categoria>(this.URLCatagoria + "/" + codigo);
   }
 
-  uptadeCategoria(codigoCategoriaAtualizar: Number, categoriaAlterado: Categoria): Observable<any>{
+  uptadeCategoria(codigoCategoriaAtualizar: number, categoriaAlterado: Categoria): Observable<any>{
     return this.http.put(this.URLCatagoria + "/" + codigoCategoriaAtualizar, categoriaAlterado);
   }
 
-  deleteCategoria(codigoCategoria: Number): Observable<any>{
+  deleteCategoria(codigoCategoria: number): Observable<any>{
     return this.http.delete<any>(this.URLCatagoria + "/" + codigoCategoria);
   }
 
@@ -98,15 +98,15 @@ export class CadastroService {
     return this.http.get<Pedido>(this.URLPedido + "/" + codigo);
   }
 
-  updatePedido(codigoPedidoAtualizar: Number, pedidoAlterado: Pedido): Observable<any>{
+  updatePedido(codigoPedidoAtualizar: number, pedidoAlterado: Pedido): Observable<any>{
     return this.http.put(this.URLPedido + "/" + codigoPedidoAtualizar, pedidoAlterado);
   }
 
-  deletePedido(codigoPedido: Number): Observable<any>{
+  deletePedido(codigoPedido: number): Observable<any>{
     return this.http.delete<any>(this.URLPedido + "/" + codigoPedido);
   }
 
-  /* Carrinho*/
+  /* Carrinho */
 
   private _totalDeItens: number = 0;
   private _totalDeItensNoCarrinho: Subject<number> = new Subject<number>();
@@ -121,7 +121,7 @@ export class CadastroService {
     this._valorTotal = 0;
     for(const item of itens){
       this._totalDeItens += item.quantidade;
-      this._valorTotal += (item.valor * item.quantidade)
+      //this._valorTotal += (item.valor * item.quantidade)
     }
     if(this._totalDeItens < 1){
       this.isCarrinhoVazio.next(true);
@@ -171,7 +171,10 @@ export class CadastroService {
       this._mapItens.delete(produto.codigo);
     }
   }
+
+
 }
+
 
 export class ItemDataSource extends DataSource<Produto>{
 

@@ -25,6 +25,8 @@ export class CreateCategoriaComponent implements OnInit {
 
   criarCategoria(){
     this.service.createCategoria(this.categoria).subscribe(() =>{
+      this.refresh();
+      this.voltar();
       this.router.navigate(['/categorias']);
 
     })

@@ -3,12 +3,13 @@ import { Categoria } from "./categoria.model";
 export class Produto {
 
   codigo: number = 0;
-  nome: String = '';
-  desc: String = '';
-  categoriaNome: Categoria = new Categoria();
-  cor: String = '';
-  valor: number = 0;
-  foto: String = '';
+  nome: string = '';
+  desc: string = '';
+  //categoria: string = '';
+  categoria: Categoria = new Categoria();
+  cor: string = '';
+  valor: string = '';
+  foto: string = '';
   quantidade: number = 0;
 
 }

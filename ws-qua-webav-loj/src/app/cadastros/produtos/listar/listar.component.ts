@@ -26,6 +26,7 @@ export class ListarComponent implements OnInit {
   ngOnInit(): void {
     this.service.readProduto().subscribe(produtos => {
       this.produtos = produtos;
+      console.log(this.produtos);
     });
   }
 

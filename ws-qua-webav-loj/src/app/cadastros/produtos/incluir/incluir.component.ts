@@ -13,7 +13,7 @@ import { Categoria } from 'src/models/categoria.model';
 export class IncluirComponent implements OnInit {
 
   produto : Produto = new Produto();
-  categoria: Categoria[] = [];
+  listadecategoria: Categoria[] = [];
 
   constructor(
     private service: CadastroService,
@@ -30,8 +30,8 @@ export class IncluirComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.readCategoria().subscribe(categoria =>{
-      this.categoria = categoria
+    this.service.readCategoria().subscribe(listadecategoria =>{
+      this.listadecategoria = listadecategoria
     });
   }
 

@@ -1,6 +1,6 @@
 export class Categoria {
 
-  codigo: Number = 0;
-  nome: String = '';
-  desc: String = '';
+  codigo: number = 0;
+  nome: string = '';
+  desc: string = '';
 }

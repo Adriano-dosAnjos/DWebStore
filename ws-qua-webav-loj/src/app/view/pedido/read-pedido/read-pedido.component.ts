@@ -29,7 +29,7 @@ export class ReadPedidoComponent implements OnInit {
   }
 
   subTotal(produto: Produto) {
-    return produto.valor * produto.quantidade;
+    //return produto.valor * produto.quantidade;
   }
 
   atualizarItem(produto: Produto){

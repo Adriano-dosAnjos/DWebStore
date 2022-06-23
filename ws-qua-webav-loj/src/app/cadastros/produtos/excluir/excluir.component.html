@@ -25,8 +25,8 @@
 
     <mat-form-field class="cmpCat" appearance="outline">
       <mat-label>categoria</mat-label>
-      <mat-select matNativeControl disabled name="categoria" [(ngModel)]="produto.categoriaNome.codigo">
-        <mat-option *ngFor="let categoria of categoria" [value]="categoria.codigo">{{categoria.nome}}</mat-option>
+      <mat-select matNativeControl disabled name="categoria" [(ngModel)]="produto.categoria">
+        <mat-option *ngFor="let categoria of categoria" [value]="categoria.nome">{{categoria.nome}}</mat-option>
       </mat-select>
     </mat-form-field>
   </mat-card-content>
